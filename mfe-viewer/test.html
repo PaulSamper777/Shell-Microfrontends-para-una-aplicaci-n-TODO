@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="UTF-8"><title>Prueba local · todo-viewer</title>
+<style>body{font-family:system-ui;max-width:640px;margin:2rem auto;padding:0 1rem}input{width:100%;padding:.4rem;margin:.5rem 0}button{margin:.25rem .25rem .25rem 0}</style></head>
+<body>
+  <h2>Prueba aislada de &lt;todo-viewer&gt;</h2>
+  <label>URL de la API (…/dev/todos)</label>
+  <input id="api" placeholder="https://xxxx.execute-api.us-east-2.amazonaws.com/dev/todos">
+  <button id="go">Cargar viewer</button>
+  <button id="ev1">Simular todo:created</button>
+  <button id="ev2">Simular todo:updated</button>
+  <p id="log"></p>
+  <div id="host"></div>
+  <script type="module">
+    import './todo-viewer.js';
+    const log = (m) => document.getElementById('log').textContent = m;
+    window.addEventListener('todo:selected', (e) => log('Emitió todo:selected → ' + JSON.stringify(e.detail)));
+    document.getElementById('go').onclick = () => {
+      const el = document.createElement('todo-viewer');
+      el.setAttribute('api-url', document.getElementById('api').value.trim());
+      document.getElementById('host').replaceChildren(el);
+    };
+    document.getElementById('ev1').onclick = () => window.dispatchEvent(new CustomEvent('todo:created', { detail: {} }));
+    document.getElementById('ev2').onclick = () => window.dispatchEvent(new CustomEvent('todo:updated', { detail: {} }));
+  </script>
+</body></html>
