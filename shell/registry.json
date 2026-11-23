@@ -1,0 +1,18 @@
+{
+  "mfes": [
+    {
+      "name": "todo-viewer",
+      "tag": "todo-viewer",
+      "slot": "slot-viewer",
+      "version": "1.0.0",
+      "url": "http://mfe-viewer-hance2066.s3-website.us-east-2.amazonaws.com/todo-viewer.js"
+    },
+    {
+      "name": "todo-editor",
+      "tag": "todo-editor",
+      "slot": "slot-editor",
+      "version": "1.0.0",
+      "url": "https://editor-todo-xavier.s3.us-east-1.amazonaws.com/todo-editor.js"
+    }
+  ]
+}
